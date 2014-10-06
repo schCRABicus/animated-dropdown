@@ -1,0 +1,26 @@
+{
+  "name": "animatedDropdown",
+  "title": "Animated dropdown",
+  "description": "Dropdown supporting dropdown menu animation effects",
+  "version": "0.1.0",
+  "homepage": "https://github.com/schcrabicus/animated-dropdown",
+  "author": {
+    "name": "schCRABicus",
+    "email": "schCRABicus@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/schcrabicus/animated-dropdown.git"
+  },
+  "bugs": "https://github.com/schcrabicus/animated-dropdown/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/schcrabicus/animated-dropdown/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": []
+}

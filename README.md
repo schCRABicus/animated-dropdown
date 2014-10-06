@@ -28,3 +28,6 @@ _(Coming soon)_
 
 ## Release History
 _(Nothing yet)_
+=======
+animated-dropdown
+=================

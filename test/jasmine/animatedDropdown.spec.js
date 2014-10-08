@@ -22,7 +22,7 @@ describe("Unit and integration test for animatedDropdown plugin", function () {
              */
             describe("Initialization with custom options via data attributes check", function () {
                 var expectedHiddenElementClass = "custom-hidden",
-                    expectedSlidingDropdownContainerClass = "custom-container",
+                    expectedAnimatedDropdownContainerClass = "custom-container",
                     expectedOptionsClass = "custom-option",
                     expectedOptionValues = [1, 2, 3],
                     expectedOptionDisplayValues = ["First", "Second", "Third"],
@@ -53,7 +53,7 @@ describe("Unit and integration test for animatedDropdown plugin", function () {
                     expect(container.length).toEqual(1);
 
                     // expect element to have proper class
-                    expect(container.hasClass(expectedSlidingDropdownContainerClass)).toBeTruthy();
+                    expect(container.hasClass(expectedAnimatedDropdownContainerClass)).toBeTruthy();
                 });
 
                 /**

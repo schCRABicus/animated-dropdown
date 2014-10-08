@@ -148,102 +148,83 @@
      * @static
      * @type {{}}
      */
-    $.animatedDropdown.utils = {
+    $.animatedDropdown = {
+        utils: {
 
-        /**
-         * Function to retrieve data-options, corresponding to defaults,
-         * from element data- attributes.
-         *
-         * @param element {jQuery} jQuery reference to element to retrieve options from.
-         * @returns {{}} Map of property keys and values, extracted from data-attributes.
-         */
-        retrieveDataOptions: function (element) {
-            var result = {},
-                option,
-                value;
+            /**
+             * Function to retrieve data-options, corresponding to defaults,
+             * from element data- attributes.
+             *
+             * @param element {jQuery} jQuery reference to element to retrieve options from.
+             * @returns {{}} Map of property keys and values, extracted from data-attributes.
+             */
+            retrieveDataOptions: function (element) {
+                var result = {},
+                    option,
+                    value;
 
-            for (option in defaults) {
-                if (defaults.hasOwnProperty(option) && (value = element.data(option))) {
-                    result[option] = value;
+                for (option in defaults) {
+                    if (defaults.hasOwnProperty(option) && (value = element.data(option))) {
+                        result[option] = value;
+                    }
                 }
-            }
 
-            return result;
-        },
+                return result;
+            },
 
-        /**
-         * Replaces placeholders in the markup with values with the corresponding keys
-         * in options map.
-         *
-         * @param markup    Html markup.
-         * @param options   Key-value map where to get placeholder values.
-         */
-        replacePlaceholders: function (markup, options) {
-            return markup ? markup.replace(/%(.*?)%/gim, function (s, k) {
-                return options ? options[k] || "" : "";
-            }) : "";
-        },
+            /**
+             * Replaces placeholders in the markup with values with the corresponding keys
+             * in options map.
+             *
+             * @param markup    Html markup.
+             * @param options   Key-value map where to get placeholder values.
+             */
+            replacePlaceholders: function (markup, options) {
+                return markup ? markup.replace(/%(.*?)%/gim, function (s, k) {
+                    return options ? options[k] || "" : "";
+                }) : "";
+            },
 
-        /**
-         * Appends plugin markup just after element
-         *
-         * @param select    Select element to append markup to
-         * @param markup    Plugin markup to append
-         * @param options   Plugin options
-         */
-        appendPluginMarkup: function (select, markup, options) {
-            if (select && select.length && markup) {
-                select.after(this.replacePlaceholders(markup, options));
-            }
-        },
+            /**
+             * Appends plugin markup just after element
+             *
+             * @param select    Select element to append markup to
+             * @param markup    Plugin markup to append
+             * @param options   Plugin options
+             */
+            appendPluginMarkup: function (select, markup, options) {
+                if (select && select.length && markup) {
+                    select.after(this.replacePlaceholders(markup, options));
+                }
+            },
 
-        /**
-         * Appends dropdown options with corresponding data- attributes and display values.
-         *
-         * @param select    Select element to append markup to
-         * @param menu      Menu jQuery reference in plugin markup where to append options to
-         * @param markup    Markup
-         * @param options   Options
-         */
-        appendDropdownOptions: function (select, menu, markup, options) {
-            var that = this;
+            /**
+             * Appends dropdown options with corresponding data- attributes and display values.
+             *
+             * @param select    Select element to append markup to
+             * @param menu      Menu jQuery reference in plugin markup where to append options to
+             * @param markup    Markup
+             * @param options   Options
+             */
+            appendDropdownOptions: function (select, menu, markup, options) {
+                var that = this;
 
-            if (select && select.length && menu && menu.length && markup) {
-                $.each(select.find('option'), function () {
-                    var option = $(this),
-                        v = option.attr('value'),
-                        h = option.html();
+                if (select && select.length && menu && menu.length && markup) {
+                    $.each(select.find('option'), function () {
+                        var option = $(this),
+                            v = option.attr('value'),
+                            h = option.html();
 
-                    menu.append(that.replacePlaceholders(markup, options));
+                        menu.append(that.replacePlaceholders(markup, options));
 
-                    menu.children().last().attr('data-value', v).html(h);
-                });
+                        menu.children().last().attr('data-value', v).html(h);
+                    });
+                }
             }
         }
     };
 
-  // Collection method.
-  $.fn.animatedDropdown = function() {
-    return this.each(function(i) {
-      // Do something awesome to each selected element.
-      $(this).html('awesome' + i);
-    });
-  };
-
-  // Static method.
-  $.animatedDropdown = function(options) {
-    // Override default options with passed-in options.
-    options = $.extend({}, $.animatedDropdown.options, options);
-    // Return something awesome.
-    return 'awesome' + options.punctuation;
-  };
-
-  // Static method default options.
-  $.animatedDropdown.options = {
-    punctuation: '.'
-  };
-
-  // Custom selector.
+    // Custom selector.
     /**
      * Custom selector to enable selector ':animatedDropdown'
      * 

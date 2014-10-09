@@ -21,8 +21,8 @@ module.exports = function (grunt) {
                 stripBanners: true
             },
             dist: {
-                src: ['src/jquery.<%= pkg.name %>.js'],
-                dest: 'dist/jquery.<%= pkg.name %>.js'
+                src: ['src/js/jquery.<%= pkg.name %>.js'],
+                dest: 'dist/js/jquery.<%= pkg.name %>.js'
             }
         },
         uglify: {
@@ -31,7 +31,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: '<%= concat.dist.dest %>',
-                dest: 'dist/jquery.<%= pkg.name %>.min.js'
+                dest: 'dist/js/jquery.<%= pkg.name %>.min.js'
             }
         },
         qunit: {
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
                     keepalive: true,
                     open: {
                         target: 'http://127.0.0.1:<%= connect.openJasmineSpec.options.port %>/_SpecRunner.html', // target url to open
-                        appName: 'firefox', // name of the app that opens, ie: open, start, xdg-open
+                        appName: 'google-chrome', // name of the app that opens, ie: open, start, xdg-open   (google-chrome, firefox)
                         callback: function () {} // called when the app has opened
                     }
                 }
@@ -86,7 +86,7 @@ module.exports = function (grunt) {
             * this file will be opened further via connect:openJasmineSpec task
             * */
             browser: {
-                src: 'src/jquery.<%= pkg.name %>.js',
+                src: 'src/js/jquery.<%= pkg.name %>.js',
                 options: {
                     specs: ['test/jasmine/**/*.js'],
                     vendor: ['libs/jquery/jquery.js', 'libs/jasmine/jasmine-jquery.js'],
@@ -132,6 +132,27 @@ module.exports = function (grunt) {
                 files: '<%= jshint.test.src %>',
                 tasks: ['jshint:test', 'qunit']
             }
+        },
+        less: {
+            dev: {
+                options: {
+                    paths: ['src/less']
+                },
+                files: {
+                    'dist/css/animatedDropdown.css': 'src/less/animatedDropdown.less'
+                }
+            },
+            prod: {
+                options: {
+                    paths: ['src/less'],
+                    cleancss: true,
+                    ieCompat: true,
+                    compress: true
+                },
+                files: {
+                    'dist/css/animatedDropdown.min.css': 'src/less/animatedDropdown.less'
+                }
+            }
         }
     });
 
@@ -144,9 +165,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify', 'less']);
     grunt.registerTask('test-jasmine', ['jshint', 'connect:server', 'jasmine:console']);
 
     /*
@@ -155,7 +177,11 @@ module.exports = function (grunt) {
 
      so,first jasmine:browser runs tests with 'keepRunner:true' option to keep _SpecRunner.html file.
       after that, connect:openJasmineSpec task in called to run the _SpecRunner.html file.
-      by dfault, open it it firefox
+      by default, open it it firefox.
+
+      Note ! The task should be launched with --force options to proceed to connect:openJasmineSpec if
+      there are failed tests, because otherwise jasmine:browser goal will fail and test results won't be opened in
+      browser.
      */
     grunt.registerTask('test-jasmine-in-browser', ['jshint', 'connect:server', 'jasmine:browser', 'connect:openJasmineSpec']);
 

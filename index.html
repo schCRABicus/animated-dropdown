@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animated dropdown example</title>
+
+    <link rel="stylesheet" type="text/css" href="dist/css/animatedDropdown.css" />
+</head>
+<body>
+
+    <section>
+        <select id="animated-select">
+            <option value="1">First</option>
+            <option value="2" selected="selected">Second</option>
+            <option value="3">Third</option>
+        </select>
+    </section>
+
+    <!-- scripts -->
+    <script type="text/javascript" src="libs/jquery/jquery.js"></script>
+    <script type="text/javascript" src="dist/js/jquery.animatedDropdown.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#animated-select").animatedDropdown({});
+        });
+    </script>
+</body>
+</html>

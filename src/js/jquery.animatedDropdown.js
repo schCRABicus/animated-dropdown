@@ -21,10 +21,11 @@
             "hidden-element-class": "hidden",
             "animated-dropdown-container-class": "animated-dropdown",
             "animated-dropdown-selected-selector": "span",
+            "animated-dropdown-selected-content-selector": "span",
             "animated-dropdown-menu-selector": "ul",
             "animated-dropdown-options-selector": "li",
             "animated-dropdown-markup": "<div class='%animated-dropdown-container-class%'>" +
-                "<span>%selected%</span>" +
+                "<span><span>%selected%</span></span>" +
                 "<ul></ul>" +
                 "</div>",
             "animated-dropdown-option-markup": "<li></li>",
@@ -81,6 +82,11 @@
                 selected,
 
                 /**
+                 * Selected content element
+                 */
+                selectedContent,
+
+                /**
                  * Menu with drop down options
                  */
                 menu,
@@ -97,6 +103,7 @@
 
             container = that.next("." + options["animated-dropdown-container-class"]);
             selected = container.find(options["animated-dropdown-selected-selector"]);
+            selectedContent = selected.find(options["animated-dropdown-selected-content-selector"]);
             menu = container.find(options["animated-dropdown-menu-selector"]);
 
             /* adding options */
@@ -104,7 +111,7 @@
             items = menu.find(options["animated-dropdown-options-selector"]);
 
             /* setting correct selected value */
-            selected.html(that.find('option[value="' + that.val() + '"]').html());
+            selectedContent.html(that.find('option[value="' + that.val() + '"]').html());
 
             /* binding click event to drop down header to open menu with animated effect */
             selected.click(function () {
@@ -124,7 +131,7 @@
                     html = $item.html();
 
                 $item.click(function () {
-                    selected.html(html);
+                    selectedContent.html(html);
                     that.val(value).select().change();
                     menu.slideUp(options["animated-period"]);
                 });
@@ -231,8 +238,8 @@
      * @param elem
      * @returns {boolean}
      */
-    $.expr[':'].animatedDropdown = function(elem) {
-        // Is this element awesome?
+    $.expr[':'].animatedDropdown = function (elem) {
+        // Is this element animated dropdown?
         return $(elem).text().indexOf('awesome') !== -1;
     };
 

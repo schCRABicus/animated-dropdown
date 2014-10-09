@@ -2,15 +2,15 @@
 1 verbose cli [ '/usr/bin/node',
 1 verbose cli   '/usr/bin/npm',
 1 verbose cli   'install',
-1 verbose cli   'grunt-contrib-connect',
+1 verbose cli   'grunt-contrib-less',
 1 verbose cli   '--save-dev' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.32
 4 verbose node symlink /usr/bin/node
 5 warn package.json animatedDropdown@0.0.0-ignored No repository field.
 6 verbose readDependencies using package.json deps
-7 verbose cache add [ 'grunt-contrib-connect', null ]
-8 verbose cache add name=undefined spec="grunt-contrib-connect" args=["grunt-contrib-connect",null]
+7 verbose cache add [ 'grunt-contrib-less', null ]
+8 verbose cache add name=undefined spec="grunt-contrib-less" args=["grunt-contrib-less",null]
 9 verbose parsed url { protocol: null,
 9 verbose parsed url   slashes: null,
 9 verbose parsed url   auth: null,
@@ -20,13 +20,13 @@
 9 verbose parsed url   hash: null,
 9 verbose parsed url   search: null,
 9 verbose parsed url   query: null,
-9 verbose parsed url   pathname: 'grunt-contrib-connect',
-9 verbose parsed url   path: 'grunt-contrib-connect',
-9 verbose parsed url   href: 'grunt-contrib-connect' }
-10 silly lockFile a0cb9c83-grunt-contrib-connect grunt-contrib-connect
-11 verbose lock grunt-contrib-connect /home/schcrabicus/.npm/a0cb9c83-grunt-contrib-connect.lock
-12 silly lockFile a0cb9c83-grunt-contrib-connect grunt-contrib-connect
-13 error Error: Attempt to unlock grunt-contrib-connect, which hasn't been locked
+9 verbose parsed url   pathname: 'grunt-contrib-less',
+9 verbose parsed url   path: 'grunt-contrib-less',
+9 verbose parsed url   href: 'grunt-contrib-less' }
+10 silly lockFile ec52cd20-grunt-contrib-less grunt-contrib-less
+11 verbose lock grunt-contrib-less /home/schcrabicus/.npm/ec52cd20-grunt-contrib-less.lock
+12 silly lockFile ec52cd20-grunt-contrib-less grunt-contrib-less
+13 error Error: Attempt to unlock grunt-contrib-less, which hasn't been locked
 13 error     at unlock (/usr/lib/node_modules/npm/lib/utils/locker.js:44:11)
 13 error     at cb (/usr/lib/node_modules/npm/lib/cache/add-local.js:30:5)
 13 error     at /usr/lib/node_modules/npm/lib/cache/add-local.js:47:20
@@ -37,8 +37,8 @@
 14 error If you need help, you may report this *entire* log,
 14 error including the npm and node versions, at:
 14 error     <http://github.com/npm/npm/issues>
-15 error System Linux 3.13.0-34-generic
-16 error command "/usr/bin/node" "/usr/bin/npm" "install" "grunt-contrib-connect" "--save-dev"
+15 error System Linux 3.13.0-36-generic
+16 error command "/usr/bin/node" "/usr/bin/npm" "install" "grunt-contrib-less" "--save-dev"
 17 error cwd /home/schcrabicus/projects/web/animated-dropdown
 18 error node -v v0.10.32
 19 error npm -v 1.4.28
